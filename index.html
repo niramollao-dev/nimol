@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>AI Shortcourse — WD Starter</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = { theme:{ extend:{ fontFamily:{ sans:['Kanit','system-ui','sans-serif'] } } } }
+  </script>
+  <style>
+    body{ font-family: 'Kanit', system-ui, sans-serif; }
+    .container { max-width: 1100px; }
+    .card { box-shadow: 0 10px 30px rgba(0,0,0,.08); }
+    .hide{ display:none; }
+  </style>
+</head>
+<body class="bg-gray-50">
+  <header class="bg-white border-b sticky top-0 z-50">
+    <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="text-xl font-semibold">AI Shortcourse</span>
+        <a href="#ai-home" class="text-sm text-blue-600 hover:underline">หน้าแรก</a>
+        <a href="#rewards" class="text-sm text-blue-600 hover:underline">ร้านค้า</a>
+        <a href="#ai-admin" class="text-sm text-blue-600 hover:underline">Admin</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <span id="user-email" class="text-sm text-gray-600"></span>
+        <div class="px-3 py-1 bg-yellow-100 text-yellow-800 rounded-full text-sm">
+          เหรียญ: <span id="coin-balance">0</span>
+        </div>
+        <button id="btnLogin" class="px-3 py-1 bg-blue-600 text-white rounded">เข้าสู่ระบบ</button>
+        <button id="btnLogout" class="px-3 py-1 bg-gray-200 rounded hide">ออกจากระบบ</button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container mx-auto px-4 py-6">
+    <!-- Home -->
+    <section id="view-home">
+      <h2 class="text-xl font-semibold mb-4">บทเรียน</h2>
+      <div id="lesson-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </section>
+
+    <!-- Lesson detail -->
+    <section id="view-lesson" class="hide">
+      <div class="mb-4">
+        <a href="#ai-home" class="text-sm text-blue-600 hover:underline">← กลับ</a>
+      </div>
+      <div id="lesson-detail" class="card bg-white rounded-xl p-4"></div>
+      <div class="mt-4" id="lesson-resources" ></div>
+      <div class="mt-6">
+        <a id="btnStartPlay" class="inline-block px-4 py-2 bg-green-600 text-white rounded" href="#">เริ่มทำแบบฝึก</a>
+      </div>
+    </section>
+
+    <!-- Play -->
+    <section id="view-play" class="hide">
+      <div class="mb-4">
+        <a href="#ai-home" class="text-sm text-blue-600 hover:underline">← กลับ</a>
+      </div>
+      <div id="play-box" class="card bg-white rounded-xl p-4"></div>
+    </section>
+
+    <!-- Rewards -->
+    <section id="view-rewards" class="hide">
+      <h2 class="text-xl font-semibold mb-4">ร้านค้าแลกเหรียญ</h2>
+      <div id="rewards-list" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+    </section>
+
+    <!-- Admin -->
+    <section id="view-admin" class="hide">
+      <h2 class="text-xl font-semibold mb-4">Admin — คำขอแลก</h2>
+      <div id="admin-redemptions" class="space-y-3"></div>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./settings.js"></script>
+  <script src="./app.js"></script>
+  <script src="./modules/ai_home.js"></script>
+  <script src="./modules/ai_lesson.js"></script>
+  <script src="./modules/ai_play.js"></script>
+  <script src="./modules/rewards.js"></script>
+  <script src="./modules/ai_admin.js"></script>
+</body>
+</html>
